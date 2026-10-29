@@ -1,0 +1,78 @@
+{
+  "name": "@marianmeres/bundle",
+  "version": "0.1.0",
+  "description": "Bundle TypeScript sources into a single browser-ready ES module (esbuild), with optional type-checking, watch mode and content-hashed output. Successor of @marianmeres/deno-build for Node projects.",
+  "license": "MIT",
+  "author": "Marian Meres",
+  "type": "module",
+  "packageManager": "pnpm@12.16.1",
+  "engines": {
+    "node": ">=24.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "bin": {
+    "bundle": "./dist/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marianmeres/bundle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marianmeres/bundle/issues"
+  },
+  "homepage": "https://github.com/marianmeres/bundle#readme",
+  "keywords": [
+    "bundle",
+    "bundler",
+    "esbuild",
+    "typescript",
+    "browser",
+    "esm",
+    "cli",
+    "cache-busting",
+    "content-hash"
+  ],
+  "scripts": {
+    "build": "pnpm run clean && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "node --test \"tests/**/*.test.ts\"",
+    "test:watch": "node --test --watch \"tests/**/*.test.ts\"",
+    "ci": "pnpm run typecheck && pnpm run lint && pnpm test",
+    "prepublishOnly": "pnpm run ci && pnpm run build",
+    "release": "npx --yes @marianmeres/release@^2.2.0",
+    "rp": "pnpm run release -y && pnpm publish",
+    "rpm": "pnpm run release minor -y && pnpm publish",
+    "example": "node src/bin.ts --root example/src --outdir example/dist --strict"
+  },
+  "dependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.3",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

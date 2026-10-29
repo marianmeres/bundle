@@ -1,0 +1,10 @@
+{
+	// Browser code: DOM lib, no Node globals. `--strict` picks this config for
+	// example/src entries because it is the nearest tsconfig.json.
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"lib": ["es2024", "dom"],
+		"types": []
+	},
+	"include": ["src"]
+}

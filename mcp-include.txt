@@ -1,0 +1,1 @@
+CLI tool and library (Node, npm) that bundles a TypeScript entry point and its imports into a single browser-ready ES module with esbuild, with optional tsc type checking (--strict), watch mode and a content-hashed copy plus manifest for cache-busting (--hash). Node successor of @marianmeres/deno-build with the same flags and defaults: run via npx @marianmeres/bundle.

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>bundle example</title>
+</head>
+<body>
+	<h1>bundle example</h1>
+	<p>Open the browser console to see the output.</p>
+
+	<script type="module">
+		import { EventEmitter, greet, randomId, VERSION } from "./dist/bundle.js";
+
+		console.log(greet("World"));
+		console.log("Version:", VERSION);
+		console.log("Random ID:", randomId("user"));
+
+		// Test EventEmitter
+		const emitter = new EventEmitter();
+		emitter.on("hello", (name) => console.log(`Event received: Hello, ${name}!`));
+		emitter.emit("hello", "Browser");
+	</script>
+</body>
+</html>
