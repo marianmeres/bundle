@@ -1,6 +1,6 @@
 {
   "name": "@marianmeres/bundle",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Bundle TypeScript sources into a single browser-ready ES module (esbuild), with optional type-checking, watch mode and content-hashed output. Successor of @marianmeres/deno-build for Node projects.",
   "license": "MIT",
   "author": "Marian Meres",
